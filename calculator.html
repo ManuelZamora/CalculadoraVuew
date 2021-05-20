@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <header><h2>Calculadora Vue</h2></header>
+<div id="app">
+    <input type="number" v-model="num1">
+    <select v-model="operation">
+        <option value="0">+</option>
+        <option value="1">-</option>
+        <option value="2">*</option>
+        <option value="3">/</option>
+    </select>
+    <input type="number" v-model="num2">
+    <button @click="calculate">=</button>
+    <strong>{{results}}</strong>
+
+    <footer>&copy; Creado por {{develpment}}</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            operation: '0',
+            results: '0',
+            develpment: 'Manuel Alejandro Zamora Tovar',
+            num1:0,
+            num2:0,
+        },
+        methods:{
+            calculate:function(){
+                switch (this.operation) {
+                    case '0' :
+                        this.results = parseInt(this.num1) + parseInt(this.num2);
+                        break;
+                    case '1' :
+                        this.results = this.num1-this.num2;
+                        break;
+                    case '2' :
+                        this.results = this.num1*this.num2;
+                        break;
+                    case '3' :
+                        this.results = this.num1/this.num2;
+                        break;
+                }
+            }
+        }
+    })
+ 
+</script>
+
+</body>
+</html>
