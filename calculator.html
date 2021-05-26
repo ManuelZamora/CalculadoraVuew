@@ -7,47 +7,51 @@
     <title>Calculadora</title>
 </head>
 <body>
-    <header><h2>Calculadora Vue</h2></header>
+    <header><h2>Calculadora VueJs</h2></header>
 <div id="app">
-    <input type="number" v-model="num1">
+    <input type="number" v-model="number1">
     <select v-model="operation">
         <option value="0">+</option>
         <option value="1">-</option>
         <option value="2">*</option>
         <option value="3">/</option>
     </select>
-    <input type="number" v-model="num2">
+    <input type="number" v-model="number2">
     <button @click="calculate">=</button>
-    <strong>{{results}}</strong>
+    <strong>{{result}}</strong>
 
-    <footer>&copy; Creado por {{develpment}}</footer>
+    <footer class="footer">
+        <p>&copy; Creado por {{develpment}}</p>
+    </footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <script>
     var cc = new Vue({
         el: '#app',
         data:{
-            operation: '',
-            results: '0',
+            operation: '0',
+            result: '0',
             develpment: 'Manuel Alejandro Zamora Tovar',
-            num1:0,
-            num2:0,
+            number1:0,
+            number2:0,
         },
         methods:{
             calculate:function(){
-                switch (this.operation) {
-                    case '0' :
-                        this.results = parseInt(this.num1) + parseInt(this.num2);
-                        break;
-                    case '1' :
-                        this.results = this.num1-this.num2;
-                        break;
-                    case '2' :
-                        this.results = this.num1*this.num2;
-                        break;
-                    case '3' :
-                        this.results = this.num1/this.num2;
-                        break;
+                //Operaciones
+                if (this.operation == '0') {
+                    this.result = parseInt(this.number1) + parseInt(this.number2);
+                }
+                else if (this.operation == '1') {
+                    this.result = this.number1-this.number2;
+                }
+                else if (this.operation == '2') {
+                    this.result = this.number1*this.number2;
+                }
+                else if (this.operation == '3') {
+                    this.result = this.number1/this.number2;
+                }
+                else{
+                    return alert("NO SE PUDO REALIZAR LA OPERACIÓN")
                 }
             }
         }
